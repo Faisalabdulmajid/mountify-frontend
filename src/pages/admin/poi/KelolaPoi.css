@@ -1,0 +1,320 @@
+/* src/pages/admin/poi/KelolaPoi.css (Final - Dengan Semua Style) */
+
+.poi-management-page {
+  padding-top: 1.5rem;
+}
+
+/* Header Halaman */
+.poi-management-page .page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.poi-management-page .page-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #1e293b;
+}
+.poi-management-page .btn-add-new {
+  background-color: #006400;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  text-decoration: none;
+}
+.poi-management-page .btn-add-new:hover {
+  background-color: #004d00;
+}
+
+/* Toolbar (Search, Filter) - Konsisten dengan KelolaGunung & KelolaJalur */
+.poi-management-page .toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  gap: 20px;
+}
+
+.poi-management-page .search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.poi-management-page .input-wrapper-icon {
+  position: relative;
+  width: 100%;
+}
+
+.poi-management-page .input-wrapper-icon i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+  font-size: 1.1rem;
+  z-index: 1;
+}
+
+.poi-management-page .input-wrapper-icon input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  height: 40px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.poi-management-page .filter-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.poi-management-page .filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.poi-management-page .filter-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.poi-management-page .filter-group select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.poi-management-page .filter-group select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+/* Button styling */
+.btn-secondary {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+/* Tabel Data - Konsisten dengan KelolaGunung & KelolaJalur */
+.table-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f3f4f6;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.data-table th {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.data-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.poi-location {
+  display: flex;
+  flex-direction: column;
+}
+.poi-gunung {
+  font-weight: 600;
+}
+.poi-jalur {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+.description-cell {
+  max-width: 250px;
+  white-space: normal;
+  line-height: 1.5;
+  color: #4b5563;
+  font-size: 0.85rem;
+}
+
+.water-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.water-badge.available {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.water-badge.unavailable {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* Tombol Aksi - Konsisten dengan KelolaJalur */
+.action-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.action-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.action-btn:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+.btn-edit:hover {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background-color: #fffbeb;
+}
+
+.btn-delete:hover {
+  color: #ef4444;
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+/* Header dengan sorting capability */
+.header-cell-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sort-icon-active {
+  color: #475569;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* === LEGACY STYLES === */
+
+/* Responsive Design untuk Toolbar POI */
+@media (max-width: 768px) {
+  .poi-management-page .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .poi-management-page .search-container {
+    width: 100%;
+  }
+
+  .poi-management-page .filter-container {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .poi-management-page .filter-group {
+    justify-content: space-between;
+  }
+
+  .poi-management-page .filter-group select {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .poi-management-page .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .poi-management-page .filter-group label {
+    font-size: 0.8rem;
+  }
+
+  .poi-management-page .filter-group select {
+    width: 100%;
+  }
+}

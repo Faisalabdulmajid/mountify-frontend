@@ -1,0 +1,84 @@
+@import url("../gunung/TambahGunung.css");
+
+/* --- STYLE BARU UNTUK TOGGLE SWITCH --- */
+.form-group.toggle-group {
+  justify-content: flex-start; /* Ubah agar tidak di tengah */
+  align-items: flex-start;
+  padding-top: 20px; /* Beri sedikit jarak dari atas */
+}
+
+.toggle-group > label {
+  margin-bottom: 12px; /* Jarak antara label utama dan switch */
+}
+
+.toggle-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggle-switch-container span {
+  font-size: 0.95rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* Sedikit lebih kecil */
+  height: 28px; /* Sedikit lebih kecil */
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px; /* Disesuaikan */
+  width: 20px; /* Disesuaikan */
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #006400; /* Warna hijau saat aktif */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #006400;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px); /* Disesuaikan */
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 28px; /* Disesuaikan */
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

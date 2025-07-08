@@ -1,0 +1,163 @@
+/* src/pages/admin/galeri/TambahGaleri.css (VERSI PERBAIKAN VISUAL) */
+
+.tambah-galeri-container {
+  padding: 30px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-header-tambah {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-header-tambah h1 {
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.btn-kembali {
+  background-color: #64748b;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.btn-kembali:hover {
+  background-color: #475569;
+}
+
+.form-wrapper-card {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: #475569;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* --- PERBAIKAN UNTUK INPUT FILE --- */
+.form-group input[type="file"] {
+  display: none; /* Sembunyikan input file asli */
+}
+
+.custom-file-upload {
+  border: 1px solid #cbd5e1;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.custom-file-upload:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.file-name {
+  margin-left: 15px;
+  font-style: italic;
+  color: #64748b;
+}
+/* --- AKHIR PERBAIKAN INPUT FILE --- */
+
+.image-preview-container {
+  margin-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+}
+
+.image-preview-container p {
+  margin: 0 0 10px 0;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 400px;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  border: 1px solid #e5e7eb;
+}
+
+.form-actions {
+  margin-top: 30px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+  text-align: right;
+}
+
+.btn-submit-galeri {
+  padding: 12px 25px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.btn-submit-galeri:hover:not(:disabled) {
+  background-color: #4338ca;
+}
+
+.btn-submit-galeri:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}

@@ -1,0 +1,214 @@
+/* Kelola Ulasan Container - Konsisten dengan halaman lain */
+.kelola-ulasan-container {
+  padding-top: 1.5rem;
+}
+
+.page-header-ulasan h1 {
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.toolbar-ulasan {
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.filter-group-ulasan {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-group-ulasan label {
+  font-weight: 500;
+  color: #475569;
+}
+
+.filter-group-ulasan select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  min-width: 200px;
+}
+
+/* Tabel Data - Konsisten dengan KelolaGunung & KelolaJalur */
+.table-container-ulasan {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+}
+
+.data-table-ulasan {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.data-table-ulasan th,
+.data-table-ulasan td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f3f4f6;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.data-table-ulasan th {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.data-table-ulasan tbody tr {
+  transition: all 0.2s ease;
+}
+
+.data-table-ulasan tbody tr:hover {
+  background-color: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.komentar-cell p {
+  max-width: 400px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.rating-stars .bi {
+  margin-right: 2px;
+}
+.star-filled {
+  color: #ffc107;
+}
+.star-empty {
+  color: #e0e0e0;
+}
+
+.status-badge-ulasan {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: white;
+}
+
+.status-disetujui {
+  background-color: #28a745;
+}
+
+.status-menunggu {
+  background-color: #fd7e14;
+}
+
+.action-buttons-ulasan {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons-ulasan .action-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.action-buttons-ulasan .btn-approve {
+  color: #28a745;
+}
+.action-buttons-ulasan .btn-approve:hover {
+  background-color: #eafaf1;
+}
+
+.action-buttons-ulasan .btn-delete {
+  color: #dc3545;
+}
+.action-buttons-ulasan .btn-delete:hover {
+  background-color: #fce8ea;
+}
+
+.text-center {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+}
+
+/* KelolaUlasan.css - Styling yang Konsisten dengan KelolaJalur */
+
+.ulasan-management-page {
+  padding-top: 1.5rem;
+}
+
+/* === TABLE STYLING - KONSISTEN DENGAN KELOLAJALUR === */
+/* Header dengan sorting capability */
+.header-cell-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sort-icon-active {
+  color: #475569;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Style Tombol Aksi - Simple & Unified */
+.action-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.action-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.action-btn:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+.btn-approve:hover {
+  color: #059669;
+  border-color: #059669;
+  background-color: #ecfdf5;
+}
+
+.btn-delete:hover {
+  color: #ef4444;
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+/* === LEGACY STYLES === */

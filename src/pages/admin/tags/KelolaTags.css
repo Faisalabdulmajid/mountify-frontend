@@ -1,0 +1,327 @@
+/* Tags Management Page - Konsisten dengan halaman lain */
+.tags-management-page {
+  padding-top: 1.5rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #343a40; /* Dark text */
+  margin: 0;
+}
+
+.btn-add-new {
+  background-color: #28a745; /* Green primary button */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.15s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-add-new:hover {
+  background-color: #218838;
+}
+
+/* Style Toolbar (Search, Filter) - Konsisten dengan halaman lain */
+.tags-management-page .toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  gap: 20px;
+}
+
+.tags-management-page .search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.tags-management-page .search-container .input-wrapper-icon {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.tags-management-page .search-container .input-wrapper-icon i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+  font-size: 1.1rem;
+  z-index: 1;
+}
+
+.tags-management-page .search-container .input-wrapper-icon input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  height: 40px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.tags-management-page .search-container .input-wrapper-icon input:focus {
+  border-color: #006400;
+  box-shadow: 0 0 0 1px #006400;
+}
+
+/* Tabel Data - Konsisten dengan KelolaGunung & KelolaJalur */
+.table-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f3f4f6;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.data-table th {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.data-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.text-center {
+  text-align: center;
+  padding: 20px;
+  color: #6c757d;
+}
+
+/* Header dengan sorting capability */
+.header-cell-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sort-icon-active {
+  color: #475569;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Style Tombol Aksi - Simple & Unified */
+.action-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.action-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.action-btn:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+.btn-edit {
+  color: #007bff;
+}
+.btn-edit:hover {
+  background-color: #e7f3ff;
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background-color: #fffbeb;
+}
+
+.btn-delete {
+  color: #dc3545;
+}
+.btn-delete:hover {
+  background-color: #f8d7da;
+  color: #ef4444;
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+/* Style for react-toastify notifications */
+.Toastify__toast {
+  border-radius: 0.25rem;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.Toastify__toast--success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.Toastify__toast--error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Style for SweetAlert2 modal (you might need to adjust based on their default styles) */
+.swal2-popup {
+  border-radius: 0.25rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.swal2-title {
+  color: #343a40;
+}
+
+.swal2-input {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.swal2-confirm {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+  color: white !important;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.swal2-confirm:hover {
+  background-color: #0056b3 !important;
+}
+
+.swal2-cancel {
+  color: #6c757d !important;
+  background-color: #e9ecef !important;
+  border-color: #e9ecef !important;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    color 0.15s ease-in-out;
+}
+
+.swal2-cancel:hover {
+  background-color: #d3d9df !important;
+  border-color: #d3d9df !important;
+  color: #495057 !important;
+}
+
+/* Style for the open modal */
+.swal2-container.swal2-shown {
+  background-color: rgba(0, 0, 0, 0.4); /* Dim background */
+}
+
+/* Responsive utilities */
+@media (max-width: 1024px) {
+  .data-table th,
+  .data-table td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tags-management-page .toolbar {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .tags-management-page .search-container {
+    width: 100%;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+/* Focus indicators for better accessibility */
+.data-table th[onClick]:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+/* Print optimizations */
+@media print {
+  .tags-management-page {
+    padding: 0;
+  }
+
+  .toolbar,
+  .pagination {
+    display: none;
+  }
+
+  .page-header .btn-add-new {
+    display: none;
+  }
+}

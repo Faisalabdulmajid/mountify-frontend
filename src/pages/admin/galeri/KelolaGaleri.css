@@ -1,0 +1,300 @@
+/* Kelola Galeri Container - Konsisten dengan halaman lain */
+.kelola-galeri-container {
+  padding-top: 1.5rem;
+}
+
+.page-header-galeri {
+  margin-bottom: 20px;
+}
+
+.page-header-galeri h1 {
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* --- STYLE UNTUK TOOLBAR --- */
+.toolbar-galeri {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: #475569;
+  font-size: 0.9em;
+}
+
+.filter-group select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 0.9em;
+  min-width: 200px;
+}
+/* --- AKHIR STYLE TOOLBAR --- */
+
+/* Style Toolbar (Search, Filter) - Konsisten dengan halaman lain */
+.kelola-galeri-container .toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  gap: 20px;
+}
+
+.kelola-galeri-container .filter-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.kelola-galeri-container .filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kelola-galeri-container .filter-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.kelola-galeri-container .filter-group select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.kelola-galeri-container .filter-group select:focus {
+  outline: none;
+  border-color: #006400;
+  box-shadow: 0 0 0 1px #006400;
+}
+
+.btn-add-new-galeri {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-add-new-galeri:hover {
+  background-color: #218838;
+}
+
+/* --- STYLE UNTUK GRID --- */
+.galeri-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.galeri-item-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.galeri-item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.galeri-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.btn-delete-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(239, 68, 68, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.galeri-item-card:hover .btn-delete-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn-delete-icon:hover {
+  background-color: #dc2626;
+  transform: scale(1.1);
+}
+
+.galeri-item-info {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.galeri-item-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  color: #1e293b;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.galeri-item-info p {
+  font-size: 0.9em;
+  color: #64748b;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* --- STYLE UNTUK INFO PENULIS & META --- */
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85em;
+  color: #64748b;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.author-info span {
+  font-weight: 500;
+}
+
+.meta-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  color: #94a3b8;
+  margin-top: auto;
+}
+
+.meta-info span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+/* --- AKHIR STYLE INFO --- */
+
+.empty-gallery-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px;
+  color: #64748b;
+  font-size: 1.1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 2px dashed #e5e7eb;
+}
+
+.spinner-container,
+.error-message-full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 1.2rem;
+  color: #475569;
+}
+
+/* Responsive utilities */
+@media (max-width: 1024px) {
+  .galeri-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .kelola-galeri-container .toolbar {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .kelola-galeri-container .filter-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .kelola-galeri-container .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .galeri-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}
+
+/* Print optimizations */
+@media print {
+  .kelola-galeri-container {
+    padding: 0;
+  }
+
+  .toolbar {
+    display: none;
+  }
+
+  .page-header .btn-add-new {
+    display: none;
+  }
+}

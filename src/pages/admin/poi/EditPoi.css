@@ -1,0 +1,233 @@
+/* src/pages/admin/EditPoi.css */
+/* Salin semua konten dari TambahPoi.css ke sini */
+
+.edit-poi-page {
+  padding-top: 1.5rem;
+}
+
+.edit-poi-page .page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.edit-poi-page .page-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #1e293b;
+  word-break: break-all; /* Untuk nama POI yang panjang */
+}
+
+.btn-back {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-back:hover {
+  background-color: #e2e8f0;
+}
+
+.form-widget-poi {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.9em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 0.95em;
+  font-family: inherit;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #006400;
+  box-shadow: 0 0 0 0.1rem rgba(0, 100, 0, 0.2);
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.foto-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9fafb;
+  cursor: pointer;
+}
+.foto-upload-container:hover {
+  border-color: #006400;
+}
+
+.foto-placeholder {
+  width: 120px;
+  height: 90px;
+  border-radius: 6px;
+  background-color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #9ca3af;
+}
+.foto-placeholder p {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: #6b7280;
+}
+.foto-preview {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid #d1d5db;
+}
+.form-group input[type="file"] {
+  border: none;
+  padding: 0;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+.form-group select[disabled] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn-cancel,
+.btn-save {
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: #475569;
+  border: 1px solid #d1d5db;
+}
+.btn-cancel:hover {
+  background-color: #f1f5f9;
+}
+.btn-cancel:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn-save {
+  background-color: #006400;
+  color: white;
+}
+.btn-save:hover {
+  background-color: #004d00;
+}
+.btn-save:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+/* Pesan Error & Sukses (bisa diglobalisasi) */
+.form-error-message {
+  color: #dc2626;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.9em;
+}
+.form-success-message {
+  color: #065f46;
+  background-color: #d1fae5;
+  border: 1px solid #6ee7b7;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.9em;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  font-size: 1.2em;
+  color: #4b5563;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .edit-poi-page .page-header {
+    /* Sesuaikan jika class page berbeda */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .edit-poi-page .page-header h1 {
+    font-size: 1.5rem;
+  }
+}
