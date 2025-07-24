@@ -1710,8 +1710,8 @@ function UsageGuideModal({ open, onClose }) {
 }
 
 function Explore() {
-  const [searchMode, setSearchMode] = useState("jalur");
-  const [chatStarted, setChatStarted] = useState(false);
+  const [searchMode, setSearchMode] = useState("gunung");
+  // Virtual Assistant (Chatbot) removed
   const [preferences, setPreferences] = useState(INITIAL_PREFERENCES);
   const [results, setResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
@@ -1740,18 +1740,12 @@ function Explore() {
     searchMode
   );
 
-  // Set initial mode to virtual assistant
-  useEffect(() => {
-    setSearchMode("virtual");
-    setChatStarted(false);
-  }, []);
+  // ...existing code...
 
   // Handle mode changes
   const handleModeChange = (mode) => {
     setSearchMode(mode);
-    if (mode === "virtual") {
-      setChatStarted(false);
-    } else {
+    if (mode !== "virtual") {
       handleReset();
     }
   };
@@ -1841,13 +1835,7 @@ function Explore() {
           <p>Temukan gunung dan jalur yang sesuai dengan preferensi Anda</p>
         </div>
         <div className="mode-switcher">
-          <button
-            onClick={() => handleModeChange("virtual")}
-            className={`mode-btn ${searchMode === "virtual" ? "active" : ""}`}
-          >
-            <span className="mode-icon">🤖</span>
-            Asisten Virtual
-          </button>
+          {/* Virtual Assistant mode removed */}
           <button
             onClick={() => handleModeChange("gunung")}
             className={`mode-btn ${searchMode === "gunung" ? "active" : ""}`}
@@ -2518,21 +2506,7 @@ function Explore() {
       )}
 
       {/* Bagian ini menampilkan Welcome Screen atau tidak sama sekali */}
-      {searchMode === "virtual" && !chatStarted && (
-        <ChatbotWelcome onStartChat={() => setChatStarted(true)} />
-      )}
-
-      {/* BAGIAN BARU: Render overlay chatbot secara terpisah */}
-      {searchMode === "virtual" && chatStarted && (
-        <div className="chatbot-overlay" onClick={() => setChatStarted(false)}>
-          <div
-            className="chatbot-container"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Chatbot onClose={() => setChatStarted(false)} />
-          </div>
-        </div>
-      )}
+      {/* Virtual Assistant UI removed */}
     </div>
   );
 }

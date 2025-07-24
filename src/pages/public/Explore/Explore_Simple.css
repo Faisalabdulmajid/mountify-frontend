@@ -1,3 +1,76 @@
+/* --- Mode Input Box (for .mode-input-wrapper, .mode-input-box, .mode-input-options, .mode-input-btn) --- */
+.mode-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px auto 20px auto;
+  width: 100%;
+  max-width: 600px;
+  gap: 16px;
+}
+
+.mode-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 14px 20px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+  border: 1.5px solid #e0e0e0;
+  min-width: 260px;
+}
+
+.mode-input-box label {
+  font-size: 1rem;
+  color: #34495e;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.mode-input-options {
+  display: flex;
+  gap: 8px;
+  background: #eaf1fb;
+  border-radius: 999px;
+  padding: 4px;
+  border: 2px solid #3498db;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.08);
+}
+
+.mode-input-btn {
+  padding: 10px 22px;
+  border: none;
+  background: transparent;
+  color: #3498db;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 90px;
+  outline: none;
+  box-shadow: none;
+}
+
+.mode-input-btn.active {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.18);
+  font-weight: 700;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.mode-input-btn:hover:not(.active),
+.mode-input-btn:focus-visible:not(.active) {
+  background: #d6eaff;
+  color: #217dbb;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+  transform: translateY(-1px) scale(1.01);
+}
 /* Simple & Professional Explore.css */
 
 * {
@@ -91,6 +164,14 @@
 /* Search Bar */
 .simple-search-container {
   margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 16px;
 }
 
 .search-bar {
@@ -203,52 +284,64 @@
 }
 
 /* Input Type Switcher */
+
+/* --- Improved Mode Input Switcher --- */
 .input-type-switcher {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  margin: 10px 0 10px 0;
 }
 
 .switcher-label {
-  font-size: 0.9rem;
-  color: #2c3e50;
-  font-weight: 600;
+  font-size: 1rem;
+  color: #34495e;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-right: 6px;
 }
 
 .switcher-buttons {
   display: flex;
-  background-color: #ecf0f1;
-  border-radius: 8px;
-  padding: 3px;
-  border: 2px solid #bdc3c7;
+  background: #eaf1fb;
+  border-radius: 999px;
+  padding: 4px;
+  border: 2px solid #3498db;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.08);
+  gap: 4px;
 }
 
 .switcher-button {
-  padding: 8px 14px;
+  padding: 10px 22px;
   border: none;
-  background-color: transparent;
-  color: #7f8c8d;
-  border-radius: 6px;
+  background: transparent;
+  color: #3498db;
+  border-radius: 999px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
-  min-width: 70px;
+  letter-spacing: 0.5px;
+  min-width: 90px;
+  outline: none;
+  box-shadow: none;
 }
 
 .switcher-button.active {
   background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-  color: white;
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-  transform: translateY(-1px);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.18);
   font-weight: 700;
+  transform: translateY(-2px) scale(1.04);
 }
 
-.switcher-button:hover:not(.active) {
-  background-color: #d5dbdb;
-  color: #2c3e50;
+.switcher-button:hover:not(.active),
+.switcher-button:focus-visible:not(.active) {
+  background: #d6eaff;
+  color: #217dbb;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+  transform: translateY(-1px) scale(1.01);
 }
 
 /* Help Section */
@@ -1001,13 +1094,13 @@
 .chatbot-input-form {
   display: flex;
   padding: 20px;
-  border-top: 2px solid #e0e0e0;
-  gap: 12px;
-  background-color: #f8f9fa;
-}
-
-.chatbot-input-form input {
-  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  width: auto;
+  max-width: none;
+  gap: 0;
   padding: 14px 16px;
   border: 2px solid #bdc3c7;
   border-radius: 8px;
@@ -1051,15 +1144,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 12px;
-  margin-top: 10px;
-}
-
-/* Share Button */
-.share-container {
-  position: relative;
-}
-
-.share-toggle-btn {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: auto;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  gap: 0;
   padding: 10px 16px;
   background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
   color: white;
@@ -1473,6 +1566,35 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* === Explore Controls Row: Search bar & Mode input sejajar === */
+.explore-controls-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 24px auto;
+  flex-wrap: nowrap;
+}
+@media (max-width: 900px) {
+  .explore-controls-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+}
+.mode-input-wrapper,
+.simple-search-container {
+  margin: 0;
+  width: auto;
+  max-width: none;
+  gap: 0;
 }
 
 /* --- Custom urutan baru: info kriteria, cara penggunaan, mode input, tombol bantuan --- */
