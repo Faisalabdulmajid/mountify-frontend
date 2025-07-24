@@ -1709,6 +1709,99 @@ function UsageGuideModal({ open, onClose }) {
   );
 }
 
+function SectionInfoModal({ open, onClose, title, infos }) {
+  if (!open) return null;
+  // Helper to convert newlines to <br />
+  const formatValue = (text) => {
+    if (!text) return "";
+    // Escape HTML, then replace newlines with <br />
+    const escaped = text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    return escaped.replace(/\n/g, "<br />");
+  };
+  return (
+    <div
+      className="usage-modal-backdrop"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: "rgba(0,0,0,0.4)",
+        zIndex: 2100,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        className="usage-modal-content"
+        style={{
+          background: "#fff",
+          borderRadius: 8,
+          maxWidth: 480,
+          width: "90%",
+          padding: 28,
+          boxShadow: "0 4px 24px rgba(0,0,0,0.15)",
+          position: "relative",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <button
+          onClick={onClose}
+          style={{
+            position: "sticky",
+            top: 0,
+            right: 0,
+            alignSelf: "flex-end",
+            fontSize: 22,
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            zIndex: 10,
+          }}
+          aria-label="Tutup"
+        >
+          &times;
+        </button>
+        <h2 style={{ marginTop: 0, marginBottom: 12 }}>{title}</h2>
+        <ul style={{ paddingLeft: 18, fontSize: 15 }}>
+          {infos.map((info, idx) => (
+            <li key={idx} style={{ marginBottom: 10 }}>
+              <b>{info.label}:</b>{" "}
+              <span
+                style={{ whiteSpace: "pre-line" }}
+                dangerouslySetInnerHTML={{ __html: formatValue(info.value) }}
+              />
+            </li>
+          ))}
+        </ul>
+        <button
+          onClick={onClose}
+          style={{
+            marginTop: 8,
+            background: "#27ae60",
+            color: "#fff",
+            border: "none",
+            padding: "8px 20px",
+            borderRadius: 4,
+            cursor: "pointer",
+            alignSelf: "flex-end",
+          }}
+        >
+          Tutup
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function Explore() {
   const [searchMode, setSearchMode] = useState("gunung");
   // Virtual Assistant (Chatbot) removed
@@ -1719,6 +1812,8 @@ function Explore() {
   const [error, setError] = useState(null);
   const [showHelp, setShowHelp] = useState(false);
   const [showUsage, setShowUsage] = useState(false); // New state for usage guide
+  // Modal states for each section
+  const [openSectionModal, setOpenSectionModal] = useState("");
   const resultsRef = useRef(null);
 
   // Use custom hooks
@@ -1805,6 +1900,25 @@ function Explore() {
     }
   }, [mountainsError]);
 
+  /*
+  =============================
+  FITUR UNGGULAN (Featured Features)
+  =============================
+  <section className="fitur-unggulan-section">
+    <h2>Fitur Unggulan</h2>
+    <ul>
+      <li>🔍 Rekomendasi jalur & gunung berbasis preferensi detail</li>
+      <li>📊 Filter canggih: kesulitan, keamanan, fasilitas, air, pemandangan, dsb</li>
+      <li>🤖 Chatbot asisten virtual (AI) untuk tanya-jawab pendakian</li>
+      <li>📱 Desain responsif & mudah digunakan di semua perangkat</li>
+      <li>🗺️ Data jalur & gunung terlengkap, update berkala</li>
+      <li>🔗 Fitur bagikan hasil rekomendasi ke WhatsApp, Email, dsb</li>
+    </ul>
+  </section>
+  =============================
+  END FITUR UNGGULAN
+  =============================
+  */
   return (
     <div className="explore-page-container">
       {/* Tombol Panduan Penggunaan */}
@@ -2090,10 +2204,35 @@ function Explore() {
             )}
 
             <div className="filter-section">
-              <h4 className="section-title">Kesulitan & Keamanan</h4>
+              <h4
+                className="section-title"
+                style={{ display: "flex", alignItems: "center", gap: 6 }}
+              >
+                Kesulitan & Keamanan
+                <button
+                  type="button"
+                  style={{
+                    color: "#27ae60",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    fontSize: 18,
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    marginLeft: 2,
+                  }}
+                  aria-label="Penjelasan Kesulitan & Keamanan"
+                  onClick={() => setOpenSectionModal("difficulty")}
+                >
+                  ?
+                </button>
+              </h4>
               <div className="form-grid">
                 <div className="form-group">
-                  <label htmlFor="max_kesulitan_skala">
+                  <label
+                    htmlFor="max_kesulitan_skala"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Tingkat Kesulitan Maksimal</span>
                     <span className="preference-value">
                       {getDifficultyDescription(
@@ -2115,7 +2254,10 @@ function Explore() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="min_keamanan_skala">
+                  <label
+                    htmlFor="min_keamanan_skala"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Tingkat Keamanan Minimal</span>
                     <span className="preference-value">
                       {getSafetyDescription(preferences.min_keamanan_skala)}
@@ -2137,10 +2279,35 @@ function Explore() {
             </div>
 
             <div className="filter-section">
-              <h4 className="section-title">Durasi & Ketinggian</h4>
+              <h4
+                className="section-title"
+                style={{ display: "flex", alignItems: "center", gap: 6 }}
+              >
+                Durasi & Ketinggian
+                <button
+                  type="button"
+                  style={{
+                    color: "#27ae60",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    fontSize: 18,
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    marginLeft: 2,
+                  }}
+                  aria-label="Penjelasan Durasi & Ketinggian"
+                  onClick={() => setOpenSectionModal("duration")}
+                >
+                  ?
+                </button>
+              </h4>
               <div className="form-grid">
                 <div className="form-group">
-                  <label htmlFor="max_estimasi_waktu_jam">
+                  <label
+                    htmlFor="max_estimasi_waktu_jam"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     Maksimal Durasi Pendakian
                   </label>
                   <TimeInput
@@ -2153,7 +2320,10 @@ function Explore() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="max_ketinggian_mdpl">
+                  <label
+                    htmlFor="max_ketinggian_mdpl"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Ketinggian Maksimal</span>
                     <span className="preference-value">
                       {getAltitudeDescription(preferences.max_ketinggian_mdpl)}
@@ -2174,10 +2344,35 @@ function Explore() {
             </div>
 
             <div className="filter-section">
-              <h4 className="section-title">Fasilitas & Kenyamanan</h4>
+              <h4
+                className="section-title"
+                style={{ display: "flex", alignItems: "center", gap: 6 }}
+              >
+                Fasilitas & Kenyamanan
+                <button
+                  type="button"
+                  style={{
+                    color: "#27ae60",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    fontSize: 18,
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    marginLeft: 2,
+                  }}
+                  aria-label="Penjelasan Fasilitas & Kenyamanan"
+                  onClick={() => setOpenSectionModal("facility")}
+                >
+                  ?
+                </button>
+              </h4>
               <div className="form-grid">
                 <div className="form-group">
-                  <label htmlFor="min_kualitas_fasilitas_skala">
+                  <label
+                    htmlFor="min_kualitas_fasilitas_skala"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Kualitas Fasilitas Minimal</span>
                     <span className="preference-value">
                       {getFacilityDescription(
@@ -2199,7 +2394,10 @@ function Explore() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="min_kualitas_kemah_skala">
+                  <label
+                    htmlFor="min_kualitas_kemah_skala"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Kualitas Area Kemah Minimal</span>
                     <span className="preference-value">
                       {getCampQualityDescription(
@@ -2223,10 +2421,35 @@ function Explore() {
             </div>
 
             <div className="filter-section">
-              <h4 className="section-title">Pemandangan & Lingkungan</h4>
+              <h4
+                className="section-title"
+                style={{ display: "flex", alignItems: "center", gap: 6 }}
+              >
+                Pemandangan & Lingkungan
+                <button
+                  type="button"
+                  style={{
+                    color: "#27ae60",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    fontSize: 18,
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    marginLeft: 2,
+                  }}
+                  aria-label="Penjelasan Pemandangan & Lingkungan"
+                  onClick={() => setOpenSectionModal("scenery")}
+                >
+                  ?
+                </button>
+              </h4>
               <div className="form-grid">
                 <div className="form-group">
-                  <label htmlFor="min_keindahan_pemandangan_skala">
+                  <label
+                    htmlFor="min_keindahan_pemandangan_skala"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Keindahan Pemandangan Minimal</span>
                     <span className="preference-value">
                       {getSceneryDescription(
@@ -2248,7 +2471,10 @@ function Explore() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="min_ketersediaan_air">
+                  <label
+                    htmlFor="min_ketersediaan_air"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Ketersediaan Air Minimal</span>
                     <span className="preference-value">
                       {getWaterAvailabilityDescription(
@@ -2272,10 +2498,35 @@ function Explore() {
             </div>
 
             <div className="filter-section">
-              <h4 className="section-title">Lanskap & Perlindungan</h4>
+              <h4
+                className="section-title"
+                style={{ display: "flex", alignItems: "center", gap: 6 }}
+              >
+                Lanskap & Perlindungan
+                <button
+                  type="button"
+                  style={{
+                    color: "#27ae60",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    fontSize: 18,
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    marginLeft: 2,
+                  }}
+                  aria-label="Penjelasan Lanskap & Perlindungan"
+                  onClick={() => setOpenSectionModal("landscape")}
+                >
+                  ?
+                </button>
+              </h4>
               <div className="form-grid">
                 <div className="form-group">
-                  <label htmlFor="min_variasi_lanskap">
+                  <label
+                    htmlFor="min_variasi_lanskap"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Variasi Lanskap Minimal</span>
                     <span className="preference-value">
                       {getLandscapeVariationDescription(
@@ -2297,7 +2548,10 @@ function Explore() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="min_perlindungan_angin">
+                  <label
+                    htmlFor="min_perlindungan_angin"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Perlindungan Angin Minimal</span>
                     <span className="preference-value">
                       {getWindProtectionDescription(
@@ -2324,10 +2578,35 @@ function Explore() {
             </div>
 
             <div className="filter-section">
-              <h4 className="section-title">Komunikasi & Keamanan Insiden</h4>
+              <h4
+                className="section-title"
+                style={{ display: "flex", alignItems: "center", gap: 6 }}
+              >
+                Komunikasi & Keamanan Insiden
+                <button
+                  type="button"
+                  style={{
+                    color: "#27ae60",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    fontSize: 18,
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    marginLeft: 2,
+                  }}
+                  aria-label="Penjelasan Komunikasi & Keamanan Insiden"
+                  onClick={() => setOpenSectionModal("communication")}
+                >
+                  ?
+                </button>
+              </h4>
               <div className="form-grid">
                 <div className="form-group">
-                  <label htmlFor="min_jaringan_komunikasi">
+                  <label
+                    htmlFor="min_jaringan_komunikasi"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Sinyal Minimal</span>
                     <span className="preference-value">
                       {getCommunicationDescription(
@@ -2352,7 +2631,10 @@ function Explore() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="min_tingkat_keamanan_insiden">
+                  <label
+                    htmlFor="min_tingkat_keamanan_insiden"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
                     <span>Insiden Minimal</span>
                     <span className="preference-value">
                       {getIncidentSafetyDescription(
@@ -2505,8 +2787,97 @@ function Explore() {
         </>
       )}
 
-      {/* Bagian ini menampilkan Welcome Screen atau tidak sama sekali */}
-      {/* Virtual Assistant UI removed */}
+      {/* Section Info Modals */}
+      <SectionInfoModal
+        open={openSectionModal === "difficulty"}
+        onClose={() => setOpenSectionModal("")}
+        title="Kesulitan & Keamanan"
+        infos={[
+          {
+            label: "Tingkat Kesulitan Maksimal",
+            value: `Batas atas tingkat kesulitan jalur/gunung yang diinginkan.\n\nSkala 1-10:\n1. Sangat mudah (jalur landai, cocok pemula)\n2. Mudah (sedikit tanjakan, aman)\n3. Cukup mudah (tanjakan ringan, jalur jelas)\n4. Menengah (tanjakan sedang, sedikit teknis)\n5. Menengah+ (tanjakan lebih curam, beberapa rintangan)\n6. Sulit (tanjakan curam, jalur berbatu/tanah licin)\n7. Sulit+ (banyak rintangan, butuh stamina lebih)\n8. Sangat sulit (teknis, butuh pengalaman)\n9. Hampir ekstrem (jalur sangat teknis, risiko tinggi)\n10. Ekstrem (hanya untuk pendaki ahli, risiko sangat tinggi)`,
+          },
+          {
+            label: "Tingkat Keamanan Minimal",
+            value: `Batas bawah tingkat keamanan jalur/gunung.\n\nSkala 1-10:\n1. Sangat berisiko (banyak insiden, rawan kecelakaan)\n2. Berisiko tinggi (insiden sering, minim pengawasan)\n3. Cukup berisiko (insiden kadang terjadi)\n4. Agak berisiko (ada beberapa titik rawan)\n5. Standar (risiko sedang, pengawasan cukup)\n6. Cukup aman (insiden jarang, jalur terpantau)\n7. Aman (jalur jelas, pengawasan baik)\n8. Sangat aman (insiden sangat jarang, jalur terawat)\n9. Hampir tanpa risiko (jalur sangat aman, pengawasan ketat)\n10. Maksimal aman (tidak ada insiden, pengawasan penuh)`,
+          },
+        ]}
+      />
+      <SectionInfoModal
+        open={openSectionModal === "duration"}
+        onClose={() => setOpenSectionModal("")}
+        title="Durasi & Ketinggian"
+        infos={[
+          {
+            label: "Maksimal Durasi Pendakian",
+            value: `Batas maksimal estimasi waktu tempuh pendakian (jam).\n\n1. Pilih sesuai kemampuan fisik dan waktu yang tersedia.\n2. Umumnya, pendakian gunung di Indonesia memakan waktu antara 4–24 jam (naik-turun).\n3. Untuk pemula, disarankan memilih durasi maksimal yang lebih pendek.`,
+          },
+          {
+            label: "Ketinggian Maksimal",
+            value: `Batas atas ketinggian puncak gunung (mdpl).\n\nSkala umum gunung di Indonesia:\n1. < 1000 mdpl\n2. 1000–1500 mdpl\n3. 1500–2000 mdpl\n4. 2000–2500 mdpl\n5. 2500–3000 mdpl\n6. 3000–3500 mdpl\n7. 3500–4000 mdpl\n8. > 4000 mdpl\nKeterangan:\n1. < 1000 mdpl: Bukit/tebing rendah (sangat mudah, cocok pemula)\n2. 1000–1500 mdpl: Gunung rendah (mudah diakses, jalur ringan)\n3. 1500–2000 mdpl: Gunung menengah (jalur mulai menanjak)\n4. 2000–2500 mdpl: Menengah+ (lebih menantang, udara lebih tipis)\n5. 2500–3000 mdpl: Gunung tinggi (butuh stamina lebih)\n6. 3000–3500 mdpl: Sangat tinggi (cuaca ekstrem, suhu dingin)\n7. 3500–4000 mdpl: Ekstrem (hanya untuk pendaki berpengalaman)\n8. > 4000 mdpl: Gunung tertinggi (sangat langka di Indonesia, risiko tinggi)`,
+          },
+        ]}
+      />
+      <SectionInfoModal
+        open={openSectionModal === "facility"}
+        onClose={() => setOpenSectionModal("")}
+        title="Fasilitas & Kenyamanan"
+        infos={[
+          {
+            label: "Kualitas Fasilitas Minimal",
+            value: `Batas bawah kualitas fasilitas basecamp, shelter, toilet, dsb.\n\nSkala 1-10:\n1. Tidak ada fasilitas\n2. Hanya basecamp sederhana\n3. Basecamp + toilet seadanya\n4. Ada shelter di jalur\n5. Shelter cukup banyak\n6. Toilet bersih, air cukup\n7. Fasilitas lengkap (warung, air, listrik)\n8. Fasilitas sangat baik, terawat\n9. Fasilitas mewah (penginapan, transportasi)\n10. Fasilitas sangat lengkap & modern`,
+          },
+          {
+            label: "Kualitas Area Kemah Minimal",
+            value: `Batas bawah kualitas area kemah.\n\nSkala 1-10:\n1. Tidak ada area kemah\n2. Area sempit, tidak rata\n3. Area cukup, tapi berbatu\n4. Area datar, kapasitas kecil\n5. Area datar, kapasitas sedang\n6. Area luas, tanah empuk\n7. Area luas, dekat sumber air\n8. Area sangat nyaman, aman dari angin\n9. Area sangat luas, pemandangan bagus\n10. Area kemah eksklusif, sangat nyaman`,
+          },
+        ]}
+      />
+      <SectionInfoModal
+        open={openSectionModal === "scenery"}
+        onClose={() => setOpenSectionModal("")}
+        title="Pemandangan & Lingkungan"
+        infos={[
+          {
+            label: "Keindahan Pemandangan Minimal",
+            value: `Batas bawah keindahan pemandangan.\n\nSkala 1-10:\n1. Tidak ada pemandangan menarik\n2. Pemandangan biasa saja\n3. Ada beberapa spot bagus\n4. Pemandangan cukup indah\n5. Pemandangan bagus di beberapa titik\n6. Pemandangan indah sepanjang jalur\n7. Banyak spot foto menarik\n8. Pemandangan sangat indah, sunrise/sunset\n9. Panorama luar biasa\n10. Pemandangan istimewa, sangat jarang ditemui`,
+          },
+          {
+            label: "Ketersediaan Air Minimal",
+            value: `Batas bawah ketersediaan air di jalur/kemah.\n\nSkala 1-10:\n1. Tidak ada sumber air\n2. Sumber air sangat langka\n3. Sumber air jauh dari jalur\n4. Ada sumber air, tapi debit kecil\n5. Sumber air cukup, kadang kering\n6. Sumber air stabil, mudah diakses\n7. Banyak sumber air di jalur\n8. Sumber air melimpah, dekat kemah\n9. Sumber air sangat melimpah\n10. Air berlimpah ruah, sangat mudah diakses`,
+          },
+        ]}
+      />
+      <SectionInfoModal
+        open={openSectionModal === "landscape"}
+        onClose={() => setOpenSectionModal("")}
+        title="Lanskap & Perlindungan"
+        infos={[
+          {
+            label: "Variasi Lanskap Minimal",
+            value: `Batas bawah keragaman lanskap/flora/fauna.\n\nSkala 1-10:\n1. Sangat monoton (hutan saja)\n2. Sedikit variasi (hutan + semak)\n3. Ada padang rumput\n4. Ada sungai/air terjun\n5. Ada tebing/batu unik\n6. Ada danau/kolam\n7. Banyak variasi flora/fauna\n8. Lanskap sangat beragam\n9. Lanskap unik & langka\n10. Lanskap luar biasa, sangat bervariasi`,
+          },
+          {
+            label: "Perlindungan Angin Minimal",
+            value: `Batas bawah perlindungan angin di area kemah.\n\nSkala 1-10:\n1. Sangat terekspos (angin kencang)\n2. Area kemah terbuka\n3. Sedikit terlindungi\n4. Ada pohon pelindung\n5. Area kemah agak terlindungi\n6. Area kemah cukup aman dari angin\n7. Area kemah sangat terlindungi\n8. Hampir tidak ada angin\n9. Area kemah sangat nyaman\n10. Perlindungan maksimal, tidak terasa angin sama sekali`,
+          },
+        ]}
+      />
+      <SectionInfoModal
+        open={openSectionModal === "communication"}
+        onClose={() => setOpenSectionModal("")}
+        title="Komunikasi & Keamanan Insiden"
+        infos={[
+          {
+            label: "Sinyal Minimal",
+            value: `Batas bawah kualitas sinyal komunikasi.\n\nSkala 1-10:\n1. Tidak ada sinyal sama sekali\n2. Sinyal sangat lemah\n3. Sinyal hanya di basecamp\n4. Sinyal kadang muncul di jalur\n5. Sinyal cukup di beberapa titik\n6. Sinyal stabil di sebagian besar jalur\n7. Sinyal kuat di area kemah\n8. Sinyal sangat baik di seluruh jalur\n9. Sinyal optimal, bisa internet\n10. Sinyal sangat kuat, seperti di kota`,
+          },
+          {
+            label: "Insiden Minimal",
+            value: `Batas bawah tingkat keamanan insiden.\n\nSkala 1-10:\n1. Insiden sangat sering (kecelakaan, hilang)\n2. Insiden sering\n3. Insiden kadang terjadi\n4. Insiden jarang\n5. Insiden sangat jarang\n6. Hampir tidak ada insiden\n7. Tidak ada insiden dalam 2 tahun terakhir\n8. Tidak ada insiden dalam 5 tahun terakhir\n9. Tidak pernah ada insiden\n10. Data keamanan sempurna, tidak ada insiden sama sekali`,
+          },
+        ]}
+      />
     </div>
   );
 }

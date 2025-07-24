@@ -135,8 +135,7 @@ function App() {
                 <>
                   <IntroSection />
                   <PengumumanTerbaruSection />
-                  <FeaturesSection />
-                  {/* <ArtikelTerbaruSection />  <-- PERBAIKAN: Baris ini dihapus */}
+                  {/* Wave divider di bawah hero section dihilangkan sesuai permintaan */}
                 </>
               }
             />
